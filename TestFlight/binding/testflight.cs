@@ -18,7 +18,7 @@ namespace MonoTouch.TestFlight {
 		void AddCustomEnvironmentInformation (string information, string key);
 
 		[Static, Export ("takeOff:")]
-		void TakeOff (string teamToken);
+        void TakeOff (string applicationToken);
 
 		// The values that the dictionary accepts:
 		// NSString ("reinstallCrashHandlers") -> NSNumber.Boolean, set to true to reinstall the crash handlers, in case some other library does
