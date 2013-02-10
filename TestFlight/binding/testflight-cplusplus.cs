@@ -23,5 +23,21 @@ namespace MonoTouch.TestFlight
 		     using (var nss = new NSString (string.Format (msg, args)))
 		         WrapperTfLog (nss.Handle);
 		}
+
+        public static void SetOption(Option option, bool value)
+        {
+            var options = new NSDictionary(new NSString(option.ToString()), NSNumber.FromBoolean(value));
+            TestFlight.SetOptions(options);
+        }
+
+        public enum Option
+        {
+            reinstallCrashHandlers,
+            logToConsole,
+            logToSTDERR,
+            sendLogOnlyOnCrash,
+            attachBacktraceToFeedback,
+            disableInAppUpdates
+        }
 	}
 }
