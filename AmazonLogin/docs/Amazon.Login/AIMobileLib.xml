@@ -1,0 +1,323 @@
+<Type Name="AIMobileLib" FullName="Amazon.Login.AIMobileLib">
+  <TypeSignature Language="C#" Value="public class AIMobileLib : MonoTouch.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AIMobileLib extends MonoTouch.Foundation.NSObject" />
+  <AssemblyInfo>
+    <AssemblyName>Amazon.Login</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoTouch.Foundation.NSObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>MonoTouch.Foundation.Register("AIMobileLib", true)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+      <para>Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.</para>
+    </summary>
+    <remarks>
+      <para>Copyright 2012-2013 Amazon.com, Inc. or its affiliates. All Rights Reserved.</para>
+      <para>Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at</para>
+      <para>
+        <ulink url="http://aws.amazon.com/apache2.0/">http://aws.amazon.com/apache2.0/</ulink>
+      </para>
+      <para>or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</para>
+      <para>
+        <ref refid="_a_i_mobile_lib_8h_source" kindref="compound">AIMobileLib.h</ref>  This header includes the <see cref="T:Amazon.Login.AIMobileLib" /> interface that provides all the Login with Amazon APIs.</para>
+      <para>
+        <see cref="T:Amazon.Login.AIMobileLib" /> is a static class that contains Login with Amazon APIs. This class provides APIs for getting authorization from users, getting profile information, clearing authorization state, and getting authorization tokens to access secure data.</para>
+      <para>
+        <para>1.0 </para>
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AIMobileLib ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("init")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters />
+      <Docs>
+        <summary>Default constructor, initializes a new instance of this class.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AIMobileLib (MonoTouch.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoTouch.Foundation.NSCoder coder) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("initWithCoder:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="coder" Type="MonoTouch.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="coder">The unarchiver object.</param>
+        <summary>A constructor that initializes the object from the data stored in the unarchiver object.</summary>
+        <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AIMobileLib (MonoTouch.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoTouch.Foundation.NSObjectFlag t) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="t" Type="MonoTouch.Foundation.NSObjectFlag" />
+      </Parameters>
+      <Docs>
+        <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
+        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
+        <remarks>
+          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advantage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
+          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
+          <para>It is your responsibility to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
+          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
+          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
+          <example>
+            <code lang="C#">
+//
+// The NSObjectFlag merely allocates the object and registers the
+// C# class with the Objective-C runtime if necessary, but no actual
+// initXxx method is invoked, that is done later in the constructor
+//
+// This is taken from MonoTouch's source code:
+//
+[Export ("initWithFrame:")]
+public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
+{
+// Invoke the init method now.
+	var initWithFrame = new Selector ("initWithFrame:").Handle;
+	if (IsDirectBinding)
+		Handle = MonoTouch.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
+	else
+		Handle = MonoTouch.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
+}
+</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AIMobileLib (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects;  Called by the runtime.</summary>
+        <remarks>
+          <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoTouch.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AuthorizeUser">
+      <MemberSignature Language="C#" Value="public static void AuthorizeUser (string[] scopes, Amazon.Login.AIAuthenticationDelegate authenticationDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AuthorizeUser(string[] scopes, class Amazon.Login.AIAuthenticationDelegate authenticationDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("authorizeUserForScopes:delegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scopes" Type="System.String[]" />
+        <Parameter Name="authenticationDelegate" Type="Amazon.Login.AIAuthenticationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="scopes">The profile scopes that the application is requesting from the user. The first scope must be "profile". "postal_code" is an optional second scope. </param>
+        <param name="authenticationDelegate">A delegate implementing the @/link protocol to receive success and failure messages.   Use this method to request authorization from the user for the required scopes. If the user has not logged in, they will see a login page. Afterward, if they have not previously approved these scopes for your application, they will see a consent page.  The sign in page is displayed in the Safari web browser, so there will be a visible switch from the application to the Safari browser. After the user signs in on the browser, they are redirected back to the app. The application must define the application:openURL:sourceApplication:annotation application delegate and call the  handleOpenURL:sourceApplication: @/link API from that delegate. This allows the SDK to get the login information from the Safari web browser.  Scopes that can be used with this API are: 1. "profile": This scope enables an application to request profile information from the backend server. The porfile information includes cusomter's name, email and user_id.  2. "postal_code": This scope enables an application to request the postal code registered to the user's account.   Pass in a valid instance of  //apple_ref/occ/intf/AIAuthenticationDelegate @/link to receive success and failure notifications.  If authorization succeeds the  //apple_ref/doc/anysymbol/requestDidSucceed: @/link method is called on the delegate. The application can now call  getProfile: @/link to retrieve the user's profile data, or  getAccessTokenForScopes:withOverrideParams:delegate: @/link to retrieve the raw access token.  If authorization fails the  //apple_ref/doc/anysymbol/requestDidFail: @/link method is called on the delegate. The error code and an error message are passed to the method in an APIError object. authorizeUserForScopes can produce the following error codes:  1.  //apple_ref/doc/anysymbol/kAIUnauthorizedClient @/link - The application is not authorized to make this call.  2.  //apple_ref/doc/anysymbol/kAIInternalError @/link - An internal error occured in the SDK. You can allow the user to login again.  3.  //apple_ref/doc/anysymbol/kAIErrorUserInterrupted @/link - The user canceled the login page. You can allow the user to login again.  4.  //apple_ref/doc/anysymbol/kAIInvalidInput @/link - One of the API parameters is invalid. See the error message for more information.  5.  //apple_ref/doc/anysymbol/kAIDeviceError @/link - The SDK encountered an error on the device. Currently, the SDK only throws this error when it receives the same error from the keychain service. Calling  clearAuthorizationState: @/link will help.  6.  //apple_ref/doc/anysymbol/kAINetworkError @/link - A network error occurred, possibly due to the user being offline.  7.  //apple_ref/doc/anysymbol/kAIServerError @/link - The server encountered an error while completing the request, or the SDK received an unknown response from the server. You can allow the user to login again.  8.  //apple_ref/doc/anysymbol/kAIAccessDenied @/link - The user did not consent to the requested scopes.   1.0 </param>
+        <summary>
+          <para>authorizeUserForScopes:delegate:  Allows the user to login and, if necessary, authorize the application for the requested scopes.</para>
+        </summary>
+        <remarks>
+          <para>authorizeUserForScopes:delegate:  Allows the user to login and, if necessary, authorize the application for the requested scopes.</para>
+          <para />
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoTouch class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearAuthorizationState">
+      <MemberSignature Language="C#" Value="public static void ClearAuthorizationState (Amazon.Login.AIAuthenticationDelegate authenticationDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ClearAuthorizationState(class Amazon.Login.AIAuthenticationDelegate authenticationDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("clearAuthorizationState:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="authenticationDelegate" Type="Amazon.Login.AIAuthenticationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="authenticationDelegate">A delegate implementing the @/link protocol to receive success and failure messages.   This method removes the authorization tokens from the key chain. It also clears the cookies from the local cookie storage to clear the authorization state of the users who checked the "Remember me" checkbox.   Pass in a valid instance of  //apple_ref/occ/intf/AIAuthenticationDelegate @/link to receive success and failure notifications.  If clearing succeeds the  //apple_ref/doc/anysymbol/requestDidSucceed: @/link method is called on the delegate.  If clearing fails the  //apple_ref/doc/anysymbol/requestDidFail: @/link method is called on the delegate. The error code and an error message are passed to the method in an APIError object. clearAuthorizationState can produce the following error codes:  1.  //apple_ref/doc/anysymbol/kAIInvalidInput @/link - One of the API parameters is invalid. See the error message for more information.  2.  //apple_ref/doc/anysymbol/kAIDeviceError @/link - The SDK encountered an error on the device. Currently, the SDK only throws this error when it receives the same error from the keychain service. Calling  clearAuthorizationState: @/link will help.   1.0 </param>
+        <summary>
+          <para>clearAuthorizationState:  Deletes cached user tokens and other data. Use this method to logout a user.</para>
+        </summary>
+        <remarks>
+          <para>clearAuthorizationState:  Deletes cached user tokens and other data. Use this method to logout a user.</para>
+          <para />
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAccessToken">
+      <MemberSignature Language="C#" Value="public static void GetAccessToken (string[] scopes, MonoTouch.Foundation.NSDictionary overrideParams, Amazon.Login.AIAuthenticationDelegate authenticationDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GetAccessToken(string[] scopes, class MonoTouch.Foundation.NSDictionary overrideParams, class Amazon.Login.AIAuthenticationDelegate authenticationDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("getAccessTokenForScopes:withOverrideParams:delegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scopes" Type="System.String[]" />
+        <Parameter Name="overrideParams" Type="MonoTouch.Foundation.NSDictionary" />
+        <Parameter Name="authenticationDelegate" Type="Amazon.Login.AIAuthenticationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="scopes">The profile scopes required for the token. The first scope must be "profile". "postal_code" is an optional second scope. </param>
+        <param name="overrideParams">A delegate implementing the @/link protocol to receive success and failure messages.  overrideParams Any additional override parameters, as key:value pairs. The SDK currently supports the following override flags:  kForceRefresh - Forces the SDK to refesh the cached access token. See  kForceRefresh @/link for more information.   This method returns a valid access token, if necessary by exchanging the current refresh token for a new access token. If the method is successful, this access token is valid for the requested scopes.  If the API is called with the  kForceRefresh @/link override property set to "YES", the SDK discards the existing access token and requests a new access token.   Pass in a valid instance of  //apple_ref/occ/intf/AIAuthenticationDelegate @/link to receive success and failure notifications.  If authorization succeeds the  //apple_ref/doc/anysymbol/requestDidSucceed: @/link method is called on the delegate. The new access token is passed in the result property of the APIResult parameter. The application can then use the access token directly with services that support it.  If authorization fails the  //apple_ref/doc/anysymbol/requestDidFail: @/link method is called on the delegate. The error code and an error message are passed to the method in an APIError object. getAccessTokenForScopes can produce the following error codes:  1.  //apple_ref/doc/anysymbol/kAIApplicationNotAuthorized @/link - The application is not authorized for scopes requested. Call authorizeUserForScopes to allow the user to authorize the application.  2.  //apple_ref/doc/anysymbol/kAIUnauthorizedClient @/link - The application is not authorized to make this call.  3.  //apple_ref/doc/anysymbol/kAIInternalError @/link - An internal error occured in the SDK. You can retry the method call.  4.  //apple_ref/doc/anysymbol/kAIInvalidInput @/link - One of the API parameters is invalid. See the error message for more information.  5.  //apple_ref/doc/anysymbol/kAIDeviceError @/link - The SDK encountered an error on the device. Currently, the SDK only throws this error when it receives the same error from the keychain service. Calling  clearAuthorizationState: @/link will help.  6.  //apple_ref/doc/anysymbol/kAINetworkError @/link - A network error occurred, possibly due to the user being offline.  7.  //apple_ref/doc/anysymbol/kAIServerError @/link - The server encountered an error while completing the request, or the SDK received an unknown response from the server. You can retry the method call.   1.0 </param>
+        <param name="authenticationDelegate">To be added.</param>
+        <summary>
+          <para>getAccessTokenForScopes:withOverrideParams:delegate:  Once the user has logged in, this method will return a valid access token for the requested scopes.</para>
+        </summary>
+        <remarks>
+          <para>getAccessTokenForScopes:withOverrideParams:delegate:  Once the user has logged in, this method will return a valid access token for the requested scopes.</para>
+          <para />
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetProfile">
+      <MemberSignature Language="C#" Value="public static void GetProfile (Amazon.Login.AIAuthenticationDelegate authenticationDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GetProfile(class Amazon.Login.AIAuthenticationDelegate authenticationDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("getProfile:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="authenticationDelegate" Type="Amazon.Login.AIAuthenticationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="authenticationDelegate">A delegate implementing the @/link protocol to receive success and failure messages.  Pass in a valid instance of  //apple_ref/occ/intf/AIAuthenticationDelegate @/link to receive success and failure notifications.  If the profile is retrieved successfully the  //apple_ref/doc/anysymbol/requestDidSucceed: @/link method is called on the delegate. The user profile is passed in the result property of the APIResult parameter as a dictionary. That dictionary includes key:value pairs with the following keys:  1. "name" - The name of the user.  2. "email" - The registered email address of the user.  3. "user_id" - The used id of the user, in the form of "amzn1.user.VALUE". The user id is unique to the user.  4. "postal_code" - The registered postal code of the user.  If authorization fails the  //apple_ref/doc/anysymbol/requestDidFail: @/link method is called on the delegate. The error code and an error message are passed to the method in an APIError object. getAccessTokenForScopes can produce the following error codes:  1.  //apple_ref/doc/anysymbol/kAIApplicationNotAuthorized @/link - The application is not authorized for the "profile" scope. Call  authorizeUserForScopes:delegate: @/link to prompt the user to login and authorize the application.  2.  //apple_ref/doc/anysymbol/kAIInternalError @/link - An internal error occured in the SDK. You can retry the method call.  3.  //apple_ref/doc/anysymbol/kAIInvalidInput @/link - One of the API parameters is invalid. See the error message for more information.  4.  //apple_ref/doc/anysymbol/kAIDeviceError @/link - The SDK encountered an error on the device. Currently, the SDK only throws this error when it receives the same error from the keychain service. Calling  clearAuthorizationState: @/link will help.  5.  //apple_ref/doc/anysymbol/kAINetworkError @/link - A network error occurred, possibly due to the user being offline.  6.  //apple_ref/doc/anysymbol/kAIServerError @/link - The server encountered an error while completing the request, or the SDK received an unknown response from the server. You can retry the method call.   1.0 </param>
+        <summary>
+          <para>getProfile:  Use this method to get the profile of the current authorized user.  This method gets profile information for the current authorized user. The application should make sure it is authorized for the "profile" scope prior to calling this method. If the application is authorized for the "postal_code" scope, getProfile will return that information as well. This profile information is cached for 60 minutes. </para>
+        </summary>
+        <remarks>
+          <para>getProfile:  Use this method to get the profile of the current authorized user.  This method gets profile information for the current authorized user. The application should make sure it is authorized for the "profile" scope prior to calling this method. If the application is authorized for the "postal_code" scope, getProfile will return that information as well. This profile information is cached for 60 minutes. </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HandleOpenUrl">
+      <MemberSignature Language="C#" Value="public static void HandleOpenUrl (MonoTouch.Foundation.NSUrl url, string sourceApplication);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void HandleOpenUrl(class MonoTouch.Foundation.NSUrl url, string sourceApplication) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoTouch.Foundation.Export("handleOpenURL:sourceApplication:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="url" Type="MonoTouch.Foundation.NSUrl" />
+        <Parameter Name="sourceApplication" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="url">To be added.</param>
+        <param name="sourceApplication">To be added.</param>
+        <summary>
+          <para>handleOpenURL:sourceApplication:  Helper function for <ref refid="interface_a_i_mobile_lib_1ac4b506bd2feab0c0d731cc5bdb27912c" kindref="member">@/link. Call this function from your implementation of application:openURL:sourceApplication:annotation delegate.   url The url received on the application:openURL:sourceApplication:annotation application delegate.  sourceApplication The sourceApplication received on the application:openURL:sourceApplication:annotation application delegate.   Returns YES if the url passed in was a valid url from SDK's reference and NO if the url was not valid.   This method handles the application:openURL:sourceApplication:annotation call from the Safari web browser. The application should be calling this function when it receives a call to application:openURL:sourceApplication:annotation, passing in the url and the sourceApplication. If application fails to do so, the SDK will not be able to complete the login flow.  The SDK validates the url parameter to check if the url is valid for the SDK. It is possible the application may want to handle the url as well, in which case the application should first call the SDK to see if this url is a callback from safari and if the SDK wants to process it. After processing, the SDK will return its preference and the application can then process the url if it chooses. Any error arising from this API is reported through the failure delegate used for the authorizeUserForScopes:delegate: call.  See  authorizeUserForScopes:delegate: @/link for more discussion on how to work with this API to complement the login work flow.   1.0 </ref></para>
+        </summary>
+        <remarks>
+          <para>handleOpenURL:sourceApplication:  Helper function for <ref refid="interface_a_i_mobile_lib_1ac4b506bd2feab0c0d731cc5bdb27912c" kindref="member">@/link. Call this function from your implementation of application:openURL:sourceApplication:annotation delegate.   url The url received on the application:openURL:sourceApplication:annotation application delegate.  sourceApplication The sourceApplication received on the application:openURL:sourceApplication:annotation application delegate.   Returns YES if the url passed in was a valid url from SDK's reference and NO if the url was not valid.   This method handles the application:openURL:sourceApplication:annotation call from the Safari web browser. The application should be calling this function when it receives a call to application:openURL:sourceApplication:annotation, passing in the url and the sourceApplication. If application fails to do so, the SDK will not be able to complete the login flow.  The SDK validates the url parameter to check if the url is valid for the SDK. It is possible the application may want to handle the url as well, in which case the application should first call the SDK to see if this url is a callback from safari and if the SDK wants to process it. After processing, the SDK will return its preference and the application can then process the url if it chooses. Any error arising from this API is reported through the failure delegate used for the authorizeUserForScopes:delegate: call.  See  authorizeUserForScopes:delegate: @/link for more discussion on how to work with this API to complement the login work flow.   1.0 </ref></para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

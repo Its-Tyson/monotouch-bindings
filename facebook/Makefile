@@ -1,3 +1,3 @@
-ASSEMBLY=Facebook.dll
+ASSEMBLY=MonoTouch.FacebookConnect.dll
 include ../Rules.make
 

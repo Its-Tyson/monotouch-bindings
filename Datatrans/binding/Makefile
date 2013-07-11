@@ -20,9 +20,9 @@ iPhone_Library.zip:
 	unzip iPhone_Library.zip
 
 libdtipl.a: iPhone_Library.zip
-	unzip $< 
+	unzip -o $< 
 	ln -sf DTiPLv$(VERSION)/lib/libdtipl.a .
-	(cd ../sample/DatatarnsSample; ln -s ../../binding/DTiPLv$(VERSION)/resources/dtipl-resources.bundle .)
+	(cd ../sample/DatatarnsSample; ln -fs ../../binding/DTiPLv$(VERSION)/resources/dtipl-resources.bundle .)
 
 Datatrans.dll: Makefile Datatrans.cs enums.cs AssemblyInfo.cs libdtipl.a
 	-mkdir -p ios

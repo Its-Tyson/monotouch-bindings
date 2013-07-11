@@ -1,22 +1,30 @@
 BTOUCH=/Developer/MonoTouch/usr/bin/btouch
-MDTOOL=/Applications/MonoDevelop.app/Contents/MacOS/mdtool
+SMCS=/Developer/MonoTouch/usr/bin/smcs
+MONOXBUILD=/Library/Frameworks/Mono.framework/Commands/xbuild
+VERSION=1.3.1
 
 all: GoogleMaps.dll
 
-googlemaps-ios-1.0.1.zip:
-	curl -O https://dl.google.com/geosdk/googlemaps-ios-1.0.1.zip > $@
+GoogleMaps-iOS-$(VERSION).zip:
+	curl -O https://dl.google.com/geosdk/GoogleMaps-iOS-$(VERSION).zip > $@
+	unzip $@
 
-libGoogleAdMobAds.a: googlemaps-ios-1.0.1.zip
-	unzip -p $< 'GoogleAdMobAdsSDK/libGoogleAdMobAds.a' > $@
+GoogleMaps: GoogleMaps-iOS-$(VERSION).zip
+	cp GoogleMaps-iOS-$(VERSION)/GoogleMaps.framework/Versions/A/GoogleMaps GoogleMaps
 
+libarclite.a:
+	curl -L https://github.com/dalexsoto/MonoTouch-PSPDFKit-bindings/raw/master/AlexTouch.PSPDFKit/libarclite.a > libarclite.a
+	curl -L https://github.com/dalexsoto/MonoTouch-PSPDFKit-bindings/raw/master/AlexTouch.PSPDFKit/libarclite.linkwith.cs > libarclite.linkwith.cs
 
-libGoogleAnalytics.a: GoogleAnalyticsiOS_1.4.tar.gz
-	tar xOzvf GoogleAnalyticsiOS_1.4.tar.gz 'Google Analytics SDK/Library/libGoogleAnalytics.a' > $@
+Resources/GoogleMaps.bundle: GoogleMaps-iOS-$(VERSION).zip GoogleMaps
+	mkdir Resources
+	cp -R GoogleMaps-iOS-$(VERSION)/GoogleMaps.framework/Versions/A/Resources/* Resources/GoogleMaps.bundle
 
-GoogleAnalytics.dll: Makefile AssemblyInfo.cs googleanalytics.cs enums.cs libGoogleAnalytics.a
-	-mkdir -p ios
-	$(BTOUCH) --out=$@ -e googleanalytics.cs enums.cs --sourceonly=list --tmpdir=ios
-	$(SMCS) $(BUILD_FLAGS) -out:$@ @list enums.cs AssemblyInfo.cs -r:monotouch.dll -res:libGoogleAnalytics.a,libGoogleAnalytics.a
+GoogleMaps.dll: Makefile GoogleMaps.linkwith.cs ApiDefinition.cs StructsAndEnums.cs GoogleMaps Resources/GoogleMaps.bundle libarclite.a
+	$(MONOXBUILD) /p:Configuration=Release GoogleMaps.csproj
+	cp bin/Release/GoogleMaps.dll GoogleMaps.dll
+
+prepare: Resources/GoogleMaps.bundle libarclite.a
 
 clean:
-	-rm -rf list ios *.a *.dll *.o
+	-rm -rf list ios Resources/ GoogleMaps-iOS-$(VERSION)/ bin/ obj/ *.sln *.userprefs *.dll *.o *.zip *.mdb GoogleMaps libarclite.a libarclite.linkwith.cs

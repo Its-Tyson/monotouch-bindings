@@ -84,7 +84,7 @@ namespace CorePlot {
 		[Wrap ("WeakDelegate"), New]
 		CPTAxisDelegate Delegate { get; set; }
 
-		[Export ("axisLineStyle")]
+		[Export ("axisLineStyle"), NullAllowed]
 		CPTLineStyle AxisLineStyle { get; set;  }
 
 		[Export ("coordinate")]
@@ -332,8 +332,8 @@ namespace CorePlot {
 		[Export ("baseValue")]
 		NSDecimal BaseValue { get; set;  }
 
-		[Export ("barBaseVary")]
-		bool BarBaseVary { get; set; }
+		[Export ("barBasesVary")]
+		bool BarBasesVary { get; set; }
 
 		[Export ("plotRange")]
 		CPTPlotRange PlotRange { get; set;  }
@@ -380,7 +380,7 @@ namespace CorePlot {
 	
 	[BaseType (typeof (CPTAnnotationHostLayer))]
 	interface CPTBorderedLayer {
-		[Export ("borderLineStyle")]
+		[Export ("borderLineStyle"),NullAllowed]
 		CPTLineStyle BorderLineStyle { get; set; }
 
 		[Export ("fill")]
@@ -717,7 +717,7 @@ namespace CorePlot {
 		[Export ("newAxisSet")]
 		CPTAxisSet NewAxisSet ();
 
-		[Export ("legent")]
+		[Export ("legend")]
 		CPTLegend Legend { get; set; }
 
 		[Export ("legendAnchor")]
@@ -1247,7 +1247,7 @@ namespace CorePlot {
 		string GetTitleForLegendEntry (int index);
 
 	        [Export ("drawSwatchForLegend:atIndex:inRect:inContext:")]
-		void DrawSwatch (CPTLegend legent, int index, RectangleF rect, CGContext context);
+		void DrawSwatch (CPTLegend legend, int index, RectangleF rect, CGContext context);
 
 		[Export ("numberOfFields")]
 		int NumberOfFields { get; }
@@ -1303,7 +1303,7 @@ namespace CorePlot {
 		[Export ("topDownLayerOrder")]
 		NSNumber [] TopDownLayerOrder { get; set;  }
 
-		[Export ("borderLineStyle")]
+	        [Export ("borderLineStyle"),NullAllowed]	
 		CPTLineStyle BorderLineStyle { get; set;  }
 
 		[Export ("fill")]
@@ -1421,7 +1421,7 @@ namespace CorePlot {
 		CPTPlotRangeComparisonResult CompareToDouble (double number);
 	}
 
-	[BaseType (typeof (NSObject))]
+	[BaseType (typeof (CALayerDelegate))]
 	[Model]
 	interface CPTPlotSpaceDelegate {
 		[DelegateName ("CPTEventPointPredicate"), DefaultValue (false)]
@@ -1491,7 +1491,7 @@ namespace CorePlot {
 		[Export ("setScaleType:forCoordinate:")]
 		void SetScaleType (CPTScaleType scaleType, CPTCoordinate forCoordinate);
 
-		[Export ("scaleTypeForCoordinate")]
+		[Export ("scaleTypeForCoordinate:")]
 		CPTScaleType GetScaleType (CPTCoordinate forCoordinate);
 		
 		[Export ("scaleToFitPlots:")]
@@ -2032,8 +2032,8 @@ namespace CorePlot {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frame);
 
-		[Export ("hostedLayer")]
-		CPTLayer HostedLayer { get; set; }
+	        [Export ("hostedGraph")]	
+	        CPTGraph HostedGraph { get; set; }	
 	}
 #endif
 }

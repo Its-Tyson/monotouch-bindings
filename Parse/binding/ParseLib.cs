@@ -3,7 +3,7 @@ using MonoTouch.Foundation;
 using MonoTouch.ObjCRuntime;
 using MonoTouch.UIKit;
 
-namespace Parse
+namespace ParseTouch
 {
 	public delegate void ParseBooleanResult (bool succeeded,NSError error);
 
@@ -28,7 +28,7 @@ namespace Parse
 	public delegate void ParseImageResult (UIImage image,NSError error);
 
 	[BaseType (typeof(NSObject), Name="Parse")]
-	public interface ParseService
+	public interface Parse
 	{
 
 		[Static]
@@ -75,19 +75,6 @@ namespace Parse
 		
 		[Export ("egoRefreshScrollViewDataSourceDidFinishedLoading:")]
 		void FinishedLoading (UIScrollView scrollView);
-		
-	}
-	
-	[BaseType (typeof (NSObject))]
-	[Model]
-	interface PF_EGORefreshTableHeaderDelegate {
-		[Abstract]
-		[Export ("egoRefreshTableHeaderDataSourceIsLoading:")]
-		bool DataSourceIsLoading (PF_EGORefreshTableHeaderView view);
-		
-		[Abstract]
-		[Export ("egoRefreshTableHeaderDataSourceLastUpdated:")]
-		NSDate DataSourceLastUpdated (PF_EGORefreshTableHeaderView view);
 		
 	}
 	
@@ -632,7 +619,7 @@ namespace Parse
 
 		[Static]
 		[Export ("queryWithClassName:")]
-		ParseQuery FromClassNAme (string className);
+		ParseQuery FromClassName (string className);
 
 		[Export ("initWithClassName:")]
 		IntPtr Constructor (string newClassName);
@@ -845,31 +832,34 @@ namespace Parse
 	[BaseType (typeof(ParseObject), Name="PFInstallation")]
 	public interface ParseInstallation
 	{
-	        [Static]
+		[Static]
 		[Export ("currentInstallation")]
-                ParseInstallation CurrentInstallation { get; }	
-	        
-	        [Static]
+		ParseInstallation CurrentInstallation { get; }
+
+		[Static]
 		[Export ("query")]
-                ParseQuery CreateQuery ();	
-		
+		ParseQuery CreateQuery ();
+
 		[Export ("deviceType")]
-                string DeviceType { get; }	
+		string DeviceType { get; }
 
-	        [Export ("installationId")]
-                string InstallationId { get; }	
+		[Export ("installationId")]
+		string InstallationId { get; }
 
-	        [Export ("deviceToken")]
-                string DeviceToken { get; }	
+		[Export ("deviceToken")]
+		string DeviceToken { get; }
+		
+		[Export ("setDeviceTokenFromData:")]
+		void SetDeviceToken (NSData deviceToken);
 
-	        [Export ("badge")]
-                int Badge { get; set; }	
+		[Export ("badge")]
+		int Badge { get; set; }
 
-	        [Export ("timeZone")]
-                string TimeZone { get; }	
+		[Export ("timeZone")]
+		string TimeZone { get; }
 
-	        [Export ("channels")]
-                string[] Channels { get; set; }	
+		[Export ("channels")]
+		string[] Channels { get; set; }	
 
 	}
 	
@@ -1083,7 +1073,7 @@ namespace Parse
 
 	}
 
-	[BaseType (typeof(NSObject), Name="PF_EGORefreshTableHeaderView")]
+	[BaseType (typeof(NSObject), Name="PF_EGORefreshTableHeaderDelegate")]
 	[Model]
 	interface Parse_EGORefreshTableHeaderDelegate
 	{
@@ -1248,7 +1238,7 @@ namespace Parse
 		UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath, ParseObject obj);
 
 		[Export ("tableView:cellForNextPageAtIndexPath:")]
-		UITableViewCell TableViewcellForNextPageAtIndexPath (UITableView tableView, NSIndexPath indexPath);
+		UITableViewCell TableViewCellForNextPageAtIndexPath (UITableView tableView, NSIndexPath indexPath);
 	}
 	
 	[BaseType (typeof(UIView), Name="PF_MBProgressHUD", Delegates=new string [] { "WeakDelegate" }, Events=new Type [] {typeof(ParseMBProgressHUDDelegate)})]

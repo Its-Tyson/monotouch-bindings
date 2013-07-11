@@ -13,6 +13,11 @@ using System.Runtime.InteropServices;
 using MonoTouch.Foundation;
 using MonoTouch.ObjCRuntime;
 using MonoTouch.UIKit;
+#if MONOMAC
+using UITextAlignment = MonoMac.AppKit.NSTextAlignment;
+using UILineBreakMode = MonoMac.AppKit.NSLineBreakMode;
+#endif
+
 
 namespace MonoTouch.Cocos2D {
 	// Use this for synchronous operations
@@ -39,7 +44,7 @@ namespace MonoTouch.Cocos2D {
 	[Register ("__My_NSActionDispatcherWithNode")]
 	internal class NSActionDispatcherWithNode : NSObject {
 
-		public static Selector Selector = new Selector ("apply");
+		public static Selector Selector = new Selector ("apply:");
 
 		Action<CCNode> action;
 
@@ -48,7 +53,7 @@ namespace MonoTouch.Cocos2D {
 			this.action = action;
 		}
 
-		[Export ("apply")]
+		[Export ("apply:")]
 		[Preserve (Conditional = true)]
 		public void Apply (CCNode node)
 		{
@@ -59,7 +64,7 @@ namespace MonoTouch.Cocos2D {
 	[Register ("__My_NSActionDispatcherWithFloat")]
 	internal class NSActionDispatcherWithFloat : NSObject {
 
-		public static Selector Selector = new Selector ("apply");
+		public static Selector Selector = new Selector ("apply:");
 
 		Action<float> action;
 
@@ -68,7 +73,7 @@ namespace MonoTouch.Cocos2D {
 			this.action = action;
 		}
 
-		[Export ("apply")]
+		[Export ("apply:")]
 		[Preserve (Conditional = true)]
 		public void Apply (float timer)
 		{
@@ -77,12 +82,11 @@ namespace MonoTouch.Cocos2D {
 	}
 	
 	public partial class CCNode {
-		static CCScheduler scheduler = CCDirector.SharedDirector.Scheduler;
 		public const uint RepeatForever = uint.MaxValue - 1;
 
 		public void Schedule (Action<float> callback, float interval=0, uint repeat=RepeatForever, float delay=0)
 		{
-			scheduler.ScheduleSelector(NSActionDispatcherWithFloat.Selector, new NSActionDispatcherWithFloat(callback), interval, !IsRunning, repeat, delay);
+			CCDirector.SharedDirector.Scheduler.ScheduleSelector(NSActionDispatcherWithFloat.Selector, new NSActionDispatcherWithFloat(callback), interval, !IsRunning, repeat, delay);
 		}
 
 		public void ScheduleOnce (Action<float> callback, float delay)
@@ -121,7 +125,7 @@ namespace MonoTouch.Cocos2D {
 				throw new ArgumentNullException ("columns");
 
 			var pNativeArr = Marshal.AllocHGlobal(columns.Length * IntPtr.Size);
-			for (var i =0; i<columns.Length;++i)
+			for (var i =1; i<columns.Length;++i)
 				Marshal.WriteIntPtr (pNativeArr, (i-1)*IntPtr.Size, columns[i].Handle);
 
 			//Null termination
@@ -137,7 +141,7 @@ namespace MonoTouch.Cocos2D {
 				throw new ArgumentNullException ("rows");
 
 			var pNativeArr = Marshal.AllocHGlobal(rows.Length * IntPtr.Size);
-			for (var i =0; i<rows.Length;++i)
+			for (var i =1; i<rows.Length;++i)
 				Marshal.WriteIntPtr (pNativeArr, (i-1)*IntPtr.Size, rows[i].Handle);
 
 			//Null termination
@@ -231,7 +235,7 @@ namespace MonoTouch.Cocos2D {
 #if ENABLE_CHIPMUNK_INTEGRATION
 	public partial class CCPhysicsSprite {
 		public Chipmunk.Body Body {
-			get { return new Chipmunk.Body (BodyPtr); }
+			get { return Chipmunk.Body.FromIntPtr (BodyPtr); }
 			set { BodyPtr = value.Handle.Handle; }
 		} 
 
@@ -246,6 +250,13 @@ namespace MonoTouch.Cocos2D {
 					throw new InvalidOperationException ("You can't set the Position if the Body isn't set");
 				PositionInt = value;
 			}
+		}
+	}
+
+	public partial class CCPhysicsDebugNode {
+		public static CCPhysicsDebugNode DebugNode (Chipmunk.Space space) 
+		{
+			return DebugNode (space.Handle.Handle);
 		}
 	}
 #endif

@@ -2,34 +2,43 @@ using System;
 using System.Runtime.InteropServices;
 using MonoTouch.CoreLocation;
 
-namespace GoogleMaps
+namespace Google.Maps
 {
-	public enum GMSMapViewType {
+	public enum MapViewType {
 		/** Basic maps.  The default. */
 		Normal = 1,
-		
+
 		/** Satellite maps with no labels. */
 		Satellite,
-		
+
 		/** Terrain maps. */
 		Terrain,
-		
+
 		/** Satellite maps with a transparent label overview. */
 		Hybrid,
-		
+
+		/** No maps, no labels.  Display of traffic data is not supported. */
+		None	
 	} 
 
 	[StructLayout (LayoutKind.Sequential)]
-	public struct GMSCamera {
-		public CLLocationCoordinate2D Coordinate;
-		public float Zoom;
+	public struct VisibleRegion {
 
-		public GMSCamera(double latitude, double longitude, float zoom)
+		public CLLocationCoordinate2D NearLeft;
+		public CLLocationCoordinate2D NearRight;
+		public CLLocationCoordinate2D FarLeft;
+		public CLLocationCoordinate2D FarRight;
+
+		public VisibleRegion (double nearLeftLatitude, double nearLeftLongitude, 
+		                         double nearRightLatitude, double nearRightLongitude, 
+		                         double farLeftLatitude, double farLeftLongitude, 
+		                         double farRightLatitude, double farRightLongitude)
 		{
-			Coordinate = new CLLocationCoordinate2D (latitude, longitude);
-			Zoom = zoom;
-		}
-
+			NearLeft = new CLLocationCoordinate2D (nearLeftLatitude, nearLeftLongitude);
+			NearRight = new CLLocationCoordinate2D (nearRightLatitude, nearRightLongitude);
+			FarLeft = new CLLocationCoordinate2D (farLeftLatitude, farLeftLongitude);
+			FarRight = new CLLocationCoordinate2D (farRightLatitude, farRightLongitude);
+		}	
 	}
 }
 
