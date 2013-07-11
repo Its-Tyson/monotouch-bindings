@@ -49,5 +49,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="testflight-cplusplus.cs" />
+    <Compile Include="testflight-threadsafe.cs" />
   </ItemGroup>
 </Project>
